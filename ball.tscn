@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://de78u6sepvyir"]
+
+[ext_resource type="Script" uid="uid://c5ktme8hejuti" path="res://ball.gd" id="1_x8fbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xoxp"]
+radius = 12.0
+
+[node name="Ball" type="CharacterBody2D" unique_id=2069878432]
+collision_layer = 4
+script = ExtResource("1_x8fbi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637992150]
+shape = SubResource("CircleShape2D_1xoxp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2031926629]
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bx8j7svrtatrd"]
+
+[ext_resource type="Script" uid="uid://bv8waeum5xdab" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xoxp"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlcta"]
+size = Vector2(60, 120)
+
+[node name="Player" type="CharacterBody2D" unique_id=855352631]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1906860598]
+shape = SubResource("RectangleShape2D_1xoxp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1956746430]
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 40.0
+color = Color(0.17181933, 0.40394938, 1, 1)
+
+[node name="Sword" type="Area2D" parent="." unique_id=1673459481]
+position = Vector2(55, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword" unique_id=1952301293]
+shape = SubResource("RectangleShape2D_rlcta")
+
+[node name="ColorRect" type="ColorRect" parent="Sword" unique_id=889090071]
+offset_left = -30.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = 60.0
+color = Color(0, 0.8627451, 0, 1)

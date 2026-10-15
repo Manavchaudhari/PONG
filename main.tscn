@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://b821myv7hqira"]
+
+[ext_resource type="PackedScene" uid="uid://bx8j7svrtatrd" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="2_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlcta"]
+size = Vector2(1280, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(40, 720)
+
+[node name="main" type="Node2D" unique_id=758064022]
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=736178871]
+position = Vector2(640, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=184126609]
+shape = SubResource("RectangleShape2D_rlcta")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=1602845967]
+offset_left = -640.0
+offset_top = -20.0
+offset_right = 640.0
+offset_bottom = 20.0
+color = Color(0.8765211, 0.063208155, 0.295354, 1)
+
+[node name="Floor2" type="StaticBody2D" parent="." unique_id=1425883004]
+position = Vector2(1260, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" unique_id=996720910]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="ColorRect" type="ColorRect" parent="Floor2" unique_id=1499092138]
+offset_left = -20.0
+offset_top = -360.0
+offset_right = 20.0
+offset_bottom = 360.0
+color = Color(0.8765211, 0.063208155, 0.295354, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=859237562]
+position = Vector2(640, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=1777670720]
+shape = SubResource("RectangleShape2D_rlcta")
+
+[node name="ColorRect" type="ColorRect" parent="Ceiling" unique_id=1065525281]
+offset_left = -640.0
+offset_top = -20.0
+offset_right = 640.0
+offset_bottom = 20.0
+color = Color(0.8765211, 0.063208155, 0.295354, 1)
+
+[node name="Player" parent="." unique_id=855352631 instance=ExtResource("1_ig7tw")]
+position = Vector2(100, 600)
+collision_layer = 2
+
+[node name="Ball" parent="." unique_id=2069878432 instance=ExtResource("2_0xm2m")]
+position = Vector2(640, 360)
