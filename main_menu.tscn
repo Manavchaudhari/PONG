@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://s7wgnbiqw150"]
+
+[ext_resource type="Script" uid="uid://ckyu441m7cs1y" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=1755582493]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1327404410]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.08, 0.12, 1)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1881846770]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainButtons" type="VBoxContainer" parent="Center" unique_id=786891046]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Center/MainButtons" unique_id=1646866266]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "PONG KNIGHT"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/MainButtons" unique_id=1646866267]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Center/MainButtons" unique_id=1911918301]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Play"
+
+[node name="LevelSelectButton" type="Button" parent="Center/MainButtons" unique_id=712829537]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Level Select"
+
+[node name="QuitButton" type="Button" parent="Center/MainButtons" unique_id=2084161307]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[node name="LevelPanel" type="VBoxContainer" parent="Center" unique_id=118914212]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Center/LevelPanel" unique_id=991647573]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Select Level"
+horizontal_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="Center/LevelPanel" unique_id=1813421684]
+layout_mode = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+
+[node name="BackButton" type="Button" parent="Center/LevelPanel" unique_id=495375938]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Back"

@@ -1,15 +1,20 @@
 [gd_scene format=3 uid="uid://b821myv7hqira"]
 
+[ext_resource type="Script" uid="uid://diak504hkmkmd" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bx8j7svrtatrd" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bwg5ophgft0le" path="res://enemy.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://b13yqofmncmqn" path="res://PowerUpSpawner.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dwyx308dggqmr" path="res://power_up.tscn" id="6_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlcta"]
 size = Vector2(1280, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(40, 720)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xoxp"]
+size = Vector2(40, 800)
 
 [node name="main" type="Node2D" unique_id=758064022]
+script = ExtResource("1_1bvp3")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=736178871]
 position = Vector2(640, 700)
@@ -22,19 +27,6 @@ offset_left = -640.0
 offset_top = -20.0
 offset_right = 640.0
 offset_bottom = 20.0
-color = Color(0.8765211, 0.063208155, 0.295354, 1)
-
-[node name="Floor2" type="StaticBody2D" parent="." unique_id=1425883004]
-position = Vector2(1260, 360)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor2" unique_id=996720910]
-shape = SubResource("RectangleShape2D_h2yge")
-
-[node name="ColorRect" type="ColorRect" parent="Floor2" unique_id=1499092138]
-offset_left = -20.0
-offset_top = -360.0
-offset_right = 20.0
-offset_bottom = 360.0
 color = Color(0.8765211, 0.063208155, 0.295354, 1)
 
 [node name="Ceiling" type="StaticBody2D" parent="." unique_id=859237562]
@@ -53,6 +45,42 @@ color = Color(0.8765211, 0.063208155, 0.295354, 1)
 [node name="Player" parent="." unique_id=855352631 instance=ExtResource("1_ig7tw")]
 position = Vector2(100, 600)
 collision_layer = 2
+air_jump_velocity = 1000.0
+fast_fall_speed = 1300.0
+wings_duration = 10.0
+fly_up_speed = 750.0
+fly_down_speed = 250.0
 
 [node name="Ball" parent="." unique_id=2069878432 instance=ExtResource("2_0xm2m")]
 position = Vector2(640, 360)
+
+[node name="Enemy" parent="." unique_id=1962391546 instance=ExtResource("3_h2yge")]
+position = Vector2(1200, 360)
+
+[node name="LeftGoal" type="Area2D" parent="." unique_id=200926640]
+position = Vector2(-30, 360)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal" unique_id=2522739]
+shape = SubResource("RectangleShape2D_1xoxp")
+
+[node name="RightGoal" type="Area2D" parent="." unique_id=1702744482]
+position = Vector2(1310, 360)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal" unique_id=500858253]
+shape = SubResource("RectangleShape2D_1xoxp")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1247326122]
+
+[node name="Label" type="Label" parent="HUD" unique_id=1937329162]
+offset_left = 60.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 73.0
+
+[node name="PowerUpSpawner" type="Node2D" parent="." unique_id=1541257768]
+script = ExtResource("5_lquwl")
+powerup_scene = ExtResource("6_7mycd")

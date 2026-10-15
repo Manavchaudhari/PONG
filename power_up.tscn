@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dwyx308dggqmr"]
+
+[ext_resource type="Script" uid="uid://ccnjus1071etv" path="res://PowerUp.gd" id="1_lbdsv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xoxp"]
+radius = 43.011627
+
+[node name="PowerUp" type="Area2D" unique_id=795834527]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_lbdsv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=466413681]
+shape = SubResource("CircleShape2D_1xoxp")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1043489490]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+color = Color(0.52156866, 0.050980393, 1, 1)

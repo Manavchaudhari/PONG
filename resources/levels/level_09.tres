@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/level_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+goals_to_win = 5
+ball_speed = 660.0
+ball_speed_up_per_hit = 28.0
+ball_max_speed = 1200.0
+ai_speed = 500.0
+ai_reaction_time = 0.16
+ai_aim_error = 20.0
+powerups_enabled = true
