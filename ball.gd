@@ -70,6 +70,4 @@ func hit_by_enemy(enemy_center_y: float) -> void:
 
 ## direction_x: 1 = right, -1 = left. offset/half_height gives -1 (top) .. 1 (bottom).
 func _launch(direction_x: float, offset: float, half_height: float) -> void:
-	var t: float = clamp(offset / half_height, -1.0, 1.0)
-	var angle: float = deg_to_rad(t * max_bounce_angle)
-	velocity = Vector2(cos(angle) * direction_x, sin(angle)) * speed
+	velocity = Helpers.angled_velocity(direction_x, offset, half_height, max_bounce_angle, speed)

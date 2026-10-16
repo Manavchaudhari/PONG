@@ -21,7 +21,7 @@ func _ready() -> void:
 	level_grid.columns = 4
 	for i in range(1, GameState.LEVEL_COUNT + 1):
 		var b := Button.new()
-		b.text = "%d\n%s" % [i, _tier_name(i)]
+		b.text = "%d\n%s" % [i, Helpers.tier_name(i)]
 		b.custom_minimum_size = Vector2(120, 70)
 		b.pressed.connect(_start.bind(i))
 		level_grid.add_child(b)
@@ -42,11 +42,3 @@ func _show_levels(show: bool) -> void:
 func _start(level: int) -> void:
 	GameState.start_run(level)  # fresh 3 hearts, chosen level
 	get_tree().change_scene_to_file(GAME_SCENE)
-
-
-func _tier_name(level: int) -> String:
-	if level >= 9:
-		return "Hard"
-	if level >= 5:
-		return "Medium"
-	return "Easy"

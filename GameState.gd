@@ -25,11 +25,7 @@ func get_level_data() -> LevelData:
 
 
 func tier_name() -> String:
-	if current_level >= 9:
-		return "Hard"
-	if current_level >= 5:
-		return "Medium"
-	return "Easy"
+	return Helpers.tier_name(current_level)
 
 
 func lose_heart() -> void:

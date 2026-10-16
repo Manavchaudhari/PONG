@@ -40,9 +40,7 @@ func _spawn() -> void:
 		_heart_spawned = true
 	else:
 		p.type = p.Type.WINGS
-	p.position = Vector2(
-		randf_range(spawn_area.position.x, spawn_area.end.x),
-		randf_range(spawn_area.position.y, spawn_area.end.y))
+	p.position = Helpers.random_point_in(spawn_area)
 	p.collected.connect(func(t): powerup_collected.emit(t))
 	add_child(p)
 	_current = p
