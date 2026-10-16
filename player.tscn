@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bv8waeum5xdab" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://c8ch20hn518g8" path="res://components/jump_component.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://denj0ci3cwron" path="res://components/swing_component.gd" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1xoxp"]
 size = Vector2(40, 80)
@@ -43,3 +44,9 @@ script = ExtResource("2_onrkg")
 air_jump_velocity = 1000.0
 fast_fall_speed = 1300.0
 metadata/_custom_type_script = "uid://c8ch20hn518g8"
+
+[node name="SwingComponent" type="Node" parent="." unique_id=331285599 node_paths=PackedStringArray("hitbox", "visual")]
+script = ExtResource("3_i3pqv")
+hitbox = NodePath("../Sword")
+visual = NodePath("../Sword/ColorRect")
+metadata/_custom_type_script = "uid://denj0ci3cwron"

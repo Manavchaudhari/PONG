@@ -1,24 +1,19 @@
 class_name JumpComponent
 extends Node
-## component: gravity, variable_height, jump, double jump and fast fall
+## COMPONENT: gravity, variable_height, jump, double jump and fast fall
 ## only changes body.velocity.y. body will call update_y() every frame
 
 @export_group("Jump")
 
 @export var gravity: float = 2200.0
-
 ## Initial upward speed. Peak height = v² / (2 × gravity).
 @export var jump_velocity: float = 1600.0 
-
 ##Multiplier applied when Space is released while still rising. Lower = shorter taps.
 @export_range(0.0, 1.0) var jump_cut: float = 0.45
-
 ## Extra jumps allowed in the air before landing again.
 @export var air_jumps: int = 1
-
 ## Weaker than the ground jump.
 @export var air_jump_velocity: float = 1200.0
-
 ## Holding (s) snaps the knight down at least this fast (also cancels upward speed).
 @export var fast_fall_speed: float = 1500.0
 
