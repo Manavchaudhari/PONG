@@ -55,6 +55,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Level Select"
 
+[node name="PlatformButton" type="Button" parent="Center/MainButtons" unique_id=1580464433]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Platform Mode"
+
 [node name="QuitButton" type="Button" parent="Center/MainButtons" unique_id=2084161307]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2

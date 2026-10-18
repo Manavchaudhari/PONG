@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://b3inylumkcdvh"]
+
+[ext_resource type="Script" uid="uid://cfp6hv6vn82ne" path="res://platform_mode.gd" id="1_bbd6r"]
+[ext_resource type="Resource" path="res://resources/levels/level_08.tres" id="2_6anth"]
+[ext_resource type="PackedScene" uid="uid://bx8j7svrtatrd" path="res://player.tscn" id="2_betjq"]
+[ext_resource type="Script" uid="uid://db4ehntiugn35" path="res://components/run_component.gd" id="3_bbd6r"]
+[ext_resource type="PackedScene" uid="uid://de78u6sepvyir" path="res://ball.tscn" id="4_6anth"]
+[ext_resource type="PackedScene" uid="uid://bwg5ophgft0le" path="res://enemy.tscn" id="5_nfq1v"]
+[ext_resource type="Script" uid="uid://b13yqofmncmqn" path="res://PowerUpSpawner.gd" id="6_kn7os"]
+[ext_resource type="PackedScene" uid="uid://dwyx308dggqmr" path="res://power_up.tscn" id="7_72gg1"]
+[ext_resource type="Script" uid="uid://dnrs7elcyv66y" path="res://components/health_component.gd" id="9_nfq1v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlcta"]
+size = Vector2(1280, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xoxp"]
+size = Vector2(40, 800)
+
+[node name="PlatformMode" type="Node2D" unique_id=758064022]
+script = ExtResource("1_bbd6r")
+level = ExtResource("2_6anth")
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=736178871]
+position = Vector2(640, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=184126609]
+shape = SubResource("RectangleShape2D_rlcta")
+
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=1602845967]
+offset_left = -640.0
+offset_top = -20.0
+offset_right = 640.0
+offset_bottom = 20.0
+color = Color(0.8765211, 0.063208155, 0.295354, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=859237562]
+position = Vector2(640, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=1777670720]
+shape = SubResource("RectangleShape2D_rlcta")
+
+[node name="ColorRect" type="ColorRect" parent="Ceiling" unique_id=1065525281]
+offset_left = -640.0
+offset_top = -20.0
+offset_right = 640.0
+offset_bottom = 20.0
+color = Color(0.8765211, 0.063208155, 0.295354, 1)
+
+[node name="Player" parent="." unique_id=855352631 instance=ExtResource("2_betjq")]
+position = Vector2(100, 600)
+collision_layer = 2
+wings_duration = 10.0
+fly_up_speed = 750.0
+fly_down_speed = 250.0
+
+[node name="RunComponent" type="Node" parent="Player" unique_id=1359386398]
+script = ExtResource("3_bbd6r")
+move_speed = 600.0
+metadata/_custom_type_script = "uid://db4ehntiugn35"
+
+[node name="Ball" parent="." unique_id=2069878432 instance=ExtResource("4_6anth")]
+position = Vector2(640, 360)
+
+[node name="Enemy" parent="." unique_id=1962391546 instance=ExtResource("5_nfq1v")]
+position = Vector2(1200, 360)
+
+[node name="LeftGoal" type="Area2D" parent="." unique_id=200926640]
+position = Vector2(-30, 360)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftGoal" unique_id=2522739]
+shape = SubResource("RectangleShape2D_1xoxp")
+
+[node name="RightGoal" type="Area2D" parent="." unique_id=1702744482]
+position = Vector2(1310, 360)
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightGoal" unique_id=500858253]
+shape = SubResource("RectangleShape2D_1xoxp")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1247326122]
+
+[node name="Label" type="Label" parent="HUD" unique_id=1937329162]
+offset_left = 60.0
+offset_top = 50.0
+offset_right = 100.0
+offset_bottom = 73.0
+
+[node name="PowerUpSpawner" type="Node2D" parent="." unique_id=1541257768]
+script = ExtResource("6_kn7os")
+powerup_scene = ExtResource("7_72gg1")
+
+[node name="Kingdom" type="Node" parent="." unique_id=1743265613]
+script = ExtResource("9_nfq1v")
+metadata/_custom_type_script = "uid://dnrs7elcyv66y"

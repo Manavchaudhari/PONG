@@ -3,6 +3,7 @@ extends Control
 ## Level buttons are created in code, so adding levels never needs editor work.
 
 const GAME_SCENE: String = "res://main.tscn"
+const PLATFORM_SCENE: String = "res://platform_mode.tscn"
 
 @onready var main_buttons: VBoxContainer = $Center/MainButtons
 @onready var level_panel: VBoxContainer = $Center/LevelPanel
@@ -12,6 +13,7 @@ const GAME_SCENE: String = "res://main.tscn"
 func _ready() -> void:
 	$Center/MainButtons/PlayButton.pressed.connect(_start.bind(1))
 	$Center/MainButtons/LevelSelectButton.pressed.connect(_show_levels.bind(true))
+	$Center/MainButtons/PlatformButton.pressed.connect(_start_platform)
 	$Center/MainButtons/QuitButton.pressed.connect(get_tree().quit)
 	$Center/LevelPanel/BackButton.pressed.connect(_show_levels.bind(false))
 	# Quit does nothing in a browser tab, so hide it on the web build.
@@ -37,6 +39,10 @@ func _show_levels(show: bool) -> void:
 		level_grid.get_child(0).grab_focus()
 	else:
 		$Center/MainButtons/PlayButton.grab_focus()
+
+
+func _start_platform() -> void:
+	get_tree().change_scene_to_file(PLATFORM_SCENE)
 
 
 func _start(level: int) -> void:
