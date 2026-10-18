@@ -45,8 +45,6 @@ color = Color(0.8765211, 0.063208155, 0.295354, 1)
 [node name="Player" parent="." unique_id=855352631 instance=ExtResource("1_ig7tw")]
 position = Vector2(100, 600)
 collision_layer = 2
-air_jump_velocity = 1000.0
-fast_fall_speed = 1300.0
 wings_duration = 10.0
 fly_up_speed = 750.0
 fly_down_speed = 250.0

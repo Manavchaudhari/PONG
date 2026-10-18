@@ -20,6 +20,7 @@ func _ready() -> void:
 	hitbox.monitoring = false
 	visual.visible = false
 
+
 func update(delta: float) -> void:
 	_cooldown_timer = max(_cooldown_timer - delta, 0.0)
 

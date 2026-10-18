@@ -15,6 +15,7 @@ signal wing_charges_changed(charges: int)
 
 @onready var swing: SwingComponent = $SwingComponent
 @onready var jump: JumpComponent = $JumpComponent
+@onready var run: RunComponent = get_node_or_null("RunComponent")
 
 ## Knight is locked to the x position it starts at, like a Pong paddle.
 var _start_x: float = 0.0
@@ -57,10 +58,7 @@ func _jump(delta: float) -> void:
 		return
 
 	jump.update_y(self,delta)
-
-	velocity.x = 0.0
-	move_and_slide()
-	global_position.x = _start_x
+	_move()
 
 
 ## Wings: no gravity. Hold jump = rise, release = sink, hold fast_fall = dive.
@@ -72,9 +70,20 @@ func _fly(delta: float) -> void:
 		velocity.y = -fly_up_speed
 	else:
 		velocity.y = fly_down_speed
-	velocity.x = 0.0
-	move_and_slide()
-	global_position.x = _start_x
-	# Placeholder visual until wings art exists: tint the knight, blink in the last 2s.
+	_move()
+	# Placeholder visual replace later with art
 	var blinking := _wings_time < 2.0 and int(_wings_time * 8.0) % 2 == 0
 	modulate = Color(1, 1, 1) if (blinking or not has_wings()) else Color(0.7, 0.9, 1.4)
+
+
+## Left and Right movement, locked like a paddle in normal mode
+func _move() -> void:
+	if run:
+		velocity.x = run.get_x_velocity()
+	else:
+		velocity.x = 0.0
+	move_and_slide()
+	if run:
+		run.clamp_to_screen(self)
+	else:
+		global_position.x = _start_x
