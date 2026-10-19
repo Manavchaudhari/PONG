@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://b13yqofmncmqn" path="res://PowerUpSpawner.gd" id="6_kn7os"]
 [ext_resource type="PackedScene" uid="uid://dwyx308dggqmr" path="res://power_up.tscn" id="7_72gg1"]
 [ext_resource type="Script" uid="uid://dnrs7elcyv66y" path="res://components/health_component.gd" id="9_nfq1v"]
+[ext_resource type="Script" uid="uid://bbhq866d0guh1" path="res://platform_spawner.gd" id="10_6anth"]
+[ext_resource type="PackedScene" uid="uid://dbmb2tyndly4n" path="res://platform.tscn" id="11_nfq1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlcta"]
 size = Vector2(1280, 40)
@@ -95,3 +97,9 @@ powerup_scene = ExtResource("7_72gg1")
 [node name="Kingdom" type="Node" parent="." unique_id=1743265613]
 script = ExtResource("9_nfq1v")
 metadata/_custom_type_script = "uid://dnrs7elcyv66y"
+
+[node name="PlatformSpawner" type="Node2D" parent="." unique_id=1078453582]
+script = ExtResource("10_6anth")
+platform_scene = ExtResource("11_nfq1v")
+min_gap = 3.0
+max_gap = 7.0

@@ -60,3 +60,8 @@ func game_over() -> void:
 ## Wings power-up collected. Spending happens in the player script.
 func add_wing_charge() -> void:
 	wing_charges = min(wing_charges + 1, MAX_WING_CHARGES)
+
+
+## How fast the world scrolls left (px/s).
+## changing it here speeds up everything at once.
+var scroll_speed: float = 0.0

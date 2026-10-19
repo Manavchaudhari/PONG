@@ -65,6 +65,7 @@ move_right={
 [layer_names]
 
 2d_physics/layer_4="enemy"
+2d_physics/layer_5="platforms"
 
 [physics]
 

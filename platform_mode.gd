@@ -10,18 +10,26 @@ const MENU_SCENE: String = "res://main_menu.tscn"
 @export var level: LevelData
 @export var goals_to_win: int = 3
 
+@export_group("Scrolling")
+@export var start_scroll_speed: float = 150.0
+@export var max_scroll_speed: float = 400.0
+## How much faster the world gets every second.
+@export var scroll_acceleration: float = 5.0
+
 @onready var ball: CharacterBody2D = $Ball
 @onready var enemy: Area2D = $Enemy
 @onready var hud_label: Label = $HUD/Label
 @onready var kingdom: HealthComponent = $Kingdom
 @onready var player: CharacterBody2D = $Player
 @onready var spawner: Node2D = $PowerUpSpawner
+@onready var platforms: Node2D = $PlatformSpawner
 
 var score: int = 0
 var state: MatchState = MatchState.PLAYING
 
 
 func _ready() -> void:
+	GameState.scroll_speed = start_scroll_speed
 	GameState.wing_charges = 0  # fresh run: no leftover wings from classic
 	spawner.powerup_collected.connect(_on_powerup_collected)
 	player.wing_charges_changed.connect(_on_wing_charges_changed)
@@ -43,12 +51,14 @@ func _apply_level() -> void:
 	enemy.aim_error = level.ai_aim_error
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene_to_file(MENU_SCENE)
 		return
 	if state != MatchState.PLAYING and Input.is_action_just_pressed("ui_accept"):
 		get_tree().reload_current_scene()
+	if state == MatchState.PLAYING:
+		GameState.scroll_speed = min(GameState.scroll_speed + scroll_acceleration * delta, max_scroll_speed)
 
 ## kingdom tak a hit
 func _on_left_goal(body: Node2D) -> void:
@@ -99,6 +109,8 @@ func _end_match(new_state: MatchState, message: String) -> void:
 	ball.stop.call_deferred()
 	spawner.clear()
 	hud_label.text += "\n" + message + "\nEnter to play again  Esc for menu"
+	platforms.enabled = false
+	GameState.scroll_speed = 0.0  # every ScrollComponent stops where it is
 
 
 func _update_hud() -> void:
